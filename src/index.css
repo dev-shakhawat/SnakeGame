@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+
+
+
+@theme {
+    --animate-food: food .5s ease-in-out infinite alternate;
+    @keyframes food {
+      0%{
+        transform: scale(.2);
+        -webkit-transform: scale(.2);
+        -moz-transform: scale(.2);
+        -ms-transform: scale(.2);
+        -o-transform: scale(.2);
+}
+      100% {
+        transform: scale(.8);
+        -webkit-transform: scale(.8);
+        -moz-transform: scale(.8);
+        -ms-transform: scale(.8);
+        -o-transform: scale(.8);
+}
+    }
+  }
