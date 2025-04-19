@@ -153,12 +153,13 @@ export const Game = () => {
         directionRef.current = "RIGHT";
         setScore(0)
         setGameover(false)
+        setPause(false)
     }
     
   return (
     <div className='grid place-items-center h-screen  '>
 
-        <div className=" w-fit  rounded-xl shadow-[rgba(0,0,0,0.24)_0px_3px_8px] overflow-hidden  ">
+        <div className=" w-fit  rounded-xl shadow-[rgba(0,0,0,0.24)_0px_3px_8px]   ">
 
             {/* score board */}
             <div className="flex justify-between bg-[#47565A] p-2 text-white items-center      ">
@@ -185,15 +186,25 @@ export const Game = () => {
                 <button onClick={()=>setPause(!pause)}  type="button" className="bg-[#47565A] text-white p-2 w-full cursor-pointer  " >{pause ? "Continue" : "Pause"}</button>
             </div>
 
+           {/* mobile controls */}
+           <div className="relative w-[100px] mx-auto h-[100px] p-2 text-white items-center  md:hidden mt-7 rotate-45   ">
+                <button onClick={()=>setDirection("UP")}  type="button" className="bg-[#47565A] text-white w-[30px] rounded-md rotate-[-45deg] cursor-pointer absolute top-0 left-0 " >&#8593;</button>
+                <button onClick={()=>setDirection("DOWN")}  type="button" className="bg-[#47565A] text-white w-[30px] rounded-md rotate-[-45deg] cursor-pointer absolute bottom-0 right-0 " >&#8595;</button>
+                <button onClick={()=>setDirection("RIGHT")}  type="button" className="bg-[#47565A] text-white w-[30px] rounded-md rotate-[-45deg] cursor-pointer absolute top-0 right-0 " >&#8594;</button>
+                <button onClick={()=>setDirection("LEFT")}  type="button" className="bg-[#47565A] text-white w-[30px] rounded-md rotate-[-45deg] cursor-pointer absolute bottom-0 left-0 " >&#8592;</button>
+           </div>
+
         </div>
 
         {gameover && (
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-lg py-2 px-5  ">
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-lg shadow-lg py-2 px-5  ">
                 <h2 className="text-2xl font-bold mb-4">Game Over</h2>
                 <p className="text-lg mb-2">Your score: {score}</p>
                 <p className="text-lg mb-2">{score > bestScore ? "New Record" : "Best Score"} : {bestScore}</p>
                 <button onClick={handelResetGame} className="bg-[#47565A] text-white px-4 py-2 rounded-lg cursor-pointer">Play Again</button>
             </div>)}
+
+        .
     </div>
   )
 }
