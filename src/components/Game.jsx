@@ -123,7 +123,7 @@ export const Game = () => {
     // game loop
     useEffect(()=>{
         if (gameover || pause) return;
-        const interval = setInterval(   MoveSnake  , (200 - score) < 50 ? 50 : (200 - score) )
+        const interval = setInterval(   MoveSnake  , (250 - score) < 50 ? 50 : (250 - score) )
         return ()=>clearInterval(interval)
     } , [snake , direction , gameover , pause])
 
